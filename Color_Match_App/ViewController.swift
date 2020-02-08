@@ -10,11 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBAction func playButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "GameViewControllerSegue", sender: self)
+    }
+    
+    @IBAction func infoButton(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+       
     }
 
-
+   
+    
 }
 

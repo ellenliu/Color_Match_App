@@ -60,6 +60,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uJ4-Vs-Y0v"/>
                     <connections>
                         <segue destination="UNX-pa-4GZ" kind="presentation" identifier="GameViewControllerSegue" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3dY-ZZ-tY4"/>
                     </connections>
@@ -83,11 +84,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbm-m8-y00">
+                                <rect key="frame" x="363" y="44" width="24" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="xmark.rectangle" catalog="system"/>
+                                <connections>
+                                    <action selector="backToMenuButton:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="RPP-RU-pVc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="UIO-kA-TSp"/>
                     </view>
                     <navigationItem key="navigationItem" id="zQg-Gc-GEe"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMenuSegue" animates="NO" modalPresentationStyle="fullScreen" id="9o2-fw-BW9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQx-Gc-Gm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,4 +131,7 @@
             <point key="canvasLocation" x="981" y="377"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark.rectangle" catalog="system" width="64" height="46"/>
+    </resources>
 </document>

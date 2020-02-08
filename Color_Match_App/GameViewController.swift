@@ -11,6 +11,9 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBAction func backToMenuButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "backToMenuSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

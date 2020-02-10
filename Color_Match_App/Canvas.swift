@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-// Making UIColor easier to use by always setting alpha to 1 and converting CGFloat
-// decimals
+/**
+ Making UIColor easier to use by always setting alpha to 1 and converting CGFloat to decimals
+ */
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255
@@ -27,6 +28,6 @@ extension UIColor {
  */
 struct Canvas {
     var color: UIColor
-    var components: [Int: UIColor]
+    var components: [UIColor: Int]
 }
 

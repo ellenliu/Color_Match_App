@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userCanvas.backgroundColor = UIColor.red
+        QuestionBank.sharedQuestionBank.addQuestions()
         // Do any additional setup after loading the view.
     }
 

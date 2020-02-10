@@ -24,7 +24,7 @@ class QuestionBank {
     private init(){
         self.unaskedQuestions = []
         self.askedQuestions = []
-        self.addQuestions()
+        //self.addQuestions()
     }
     
     class func shared() -> QuestionBank {
@@ -40,10 +40,10 @@ class QuestionBank {
     }
     
     func addQuestions () {
-        let whiteCanvas: Canvas = Canvas(color:UIColor(red:255, green: 255, blue: 255), components: [UIColor(red:255, green: 0, blue: 0): 1, UIColor(red:0, green: 255, blue: 0): 1, UIColor(red:0, green: 0, blue: 255): 1])
         let yellowCanvas: Canvas = Canvas(color:UIColor(red: 255, green: 255, blue:0), components: [UIColor(red:255, green: 0, blue: 0): 1, UIColor(red:0, green: 255, blue: 0): 1])
         unaskedQuestions.append(yellowCanvas)
-        unaskedQuestions.append(whiteCanvas)
+        unaskedQuestions.append(yellowCanvas)
+        
     }
 
 }

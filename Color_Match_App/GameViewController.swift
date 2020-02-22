@@ -14,6 +14,13 @@ class GameViewController: UIViewController {
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
     
+    @IBAction func yellowButton(_ sender: UIButton) {
+        print("I was pressed")
+    }
+    
+    @IBAction func yellowButtonCounter(_ sender: UIButton) {
+        print("decrease yellow")
+    }
     @IBAction func backToMenuButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToMenuSegue", sender: self)
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  A singleton to be shared by the app. Contains all the "levels" in the game
@@ -23,6 +24,7 @@ class QuestionBank {
     private init(){
         self.unaskedQuestions = []
         self.askedQuestions = []
+        //self.addQuestions()
     }
     
     class func shared() -> QuestionBank {
@@ -35,6 +37,13 @@ class QuestionBank {
         unaskedQuestions.remove(at: 0)
         askedQuestions.append(newCanvas)
         return newCanvas
+    }
+    
+    func addQuestions () {
+        let yellowCanvas: Canvas = Canvas(color:UIColor(red: 255, green: 255, blue:0), components: [UIColor(red:255, green: 0, blue: 0): 1, UIColor(red:0, green: 255, blue: 0): 1])
+        unaskedQuestions.append(yellowCanvas)
+        unaskedQuestions.append(yellowCanvas)
+        
     }
 
 }

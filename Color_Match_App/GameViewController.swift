@@ -14,12 +14,24 @@ class GameViewController: UIViewController {
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
     
-    @IBAction func yellowButton(_ sender: UIButton) {
-        print("I was pressed")
-    }
+    @IBOutlet weak var yellowButton: UIButton!
+    var yellowCount = 0
+    @IBOutlet weak var yellowButtonDecrease: UIButton!
     
+    /**
+    
+     Keeps track of how many times yellow was added, updated user canvas to be more yellow
+     */
+    @IBAction func yellowButton(_ sender: UIButton) {
+        yellowCount += 1
+        yellowButton.setTitle(String(yellowCount), for: .normal)
+    }
+    /**
+     Keeps track of how many times the yellow button was unpressed, updates the user canvas background color to be less yellow
+     */
     @IBAction func yellowButtonCounter(_ sender: UIButton) {
-        print("decrease yellow")
+        yellowCount -= 1
+        yellowButton.setTitle(String(yellowCount), for: .normal)
     }
     @IBAction func backToMenuButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToMenuSegue", sender: self)
@@ -30,11 +42,27 @@ class GameViewController: UIViewController {
         userCanvas.layer.borderColor = UIColor.black.cgColor
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
+        
+        // This can be customized based on each question
         userCanvas.backgroundColor = UIColor.red
         QuestionBank.sharedQuestionBank.addQuestions()
         let goalCanvasQuestion:Canvas = QuestionBank.sharedQuestionBank.pop()
         goalCanvas.backgroundColor = goalCanvasQuestion.color
-        // Do any additional setup after loading the view.
+        
+        // Make round buttons
+        yellowButton.backgroundColor = UIColor.yellow
+        yellowButtonDecrease.layer.borderWidth = 2
+        yellowButtonDecrease.layer.borderColor = UIColor.black.cgColor
+        self.applyRoundBorders(yellowButton)
+        yellowButton.setTitle(String(yellowCount), for: .normal)
+        yellowButtonDecrease.setTitle("-", for: .normal)
+        self.applyRoundBorders(yellowButtonDecrease)
+
+    }
+    
+    func applyRoundBorders(_ object: AnyObject) {
+        object.layer?.cornerRadius = object.frame.size.width / 2
+        object.layer?.masksToBounds = true
     }
 
 

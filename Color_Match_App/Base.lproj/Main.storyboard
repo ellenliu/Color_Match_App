@@ -220,6 +220,8 @@
                     <connections>
                         <outlet property="goalCanvas" destination="fdz-vG-GtO" id="tiO-kA-zDp"/>
                         <outlet property="userCanvas" destination="llW-2m-ecZ" id="Uro-RU-wBO"/>
+                        <outlet property="yellowButton" destination="yuY-kQ-d2t" id="TCW-hj-e5o"/>
+                        <outlet property="yellowButtonDecrease" destination="a0K-dJ-xcv" id="K3E-yJ-pM8"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMenuSegue" animates="NO" modalPresentationStyle="fullScreen" id="9o2-fw-BW9"/>
                     </connections>
                 </viewController>

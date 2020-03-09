@@ -33,16 +33,20 @@ class QuestionBank {
     
     // Return a new question and add that to the list of asked questions
     func pop() -> Canvas{
-        let newCanvas = unaskedQuestions[0]
+        let newCanvas = unaskedQuestions.first
         unaskedQuestions.remove(at: 0)
-        askedQuestions.append(newCanvas)
-        return newCanvas
+        askedQuestions.append(newCanvas ?? Canvas(color: UIColor(red: 0, green:0, blue:0), red: 0, green: 0, blue: 0))
+        return newCanvas!
     }
     
     func addQuestions () {
-        let yellowCanvas: Canvas = Canvas(color:UIColor(red: 255, green: 255, blue:0), components: [UIColor(red:255, green: 0, blue: 0): 1, UIColor(red:0, green: 255, blue: 0): 1])
-        unaskedQuestions.append(yellowCanvas)
-        unaskedQuestions.append(yellowCanvas)
+        //let yellowCanvas: Canvas = Canvas(color:UIColor(red: 255, green: 255, blue:0), components: [UIColor(red:255, green: 0, blue: 0): 1, UIColor(red:0, green: 255, blue: 0): 1])
+        let teal: Canvas = Canvas(color: UIColor(red: 50, green: 150, blue:150), red: 1, green:3, blue: 3)
+        let magenta: Canvas = Canvas(color: UIColor(red: 150, green: 50, blue:150), red: 3, green: 2, blue: 3)
+        unaskedQuestions.append(teal)
+        unaskedQuestions.append(magenta)
+        //unaskedQuestions.append(yellowCanvas)
+        //unaskedQuestions.append(yellowCanvas)
         
     }
 

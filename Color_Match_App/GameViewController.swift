@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
     var blueCount = 0
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var blueButtonDecrease: UIButton!
+    var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 0, green:0, blue:0), red: 0, green: 0, blue: 0)
     /**
     
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
@@ -32,6 +33,7 @@ class GameViewController: UIViewController {
     @IBAction func yellowButton(_ sender: UIButton) {
         yellowCount += 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
+        checkUserAnswer()
     }
     /**
      Keeps track of how many times the yellow button was unpressed, updates the user canvas background color to be less yellow
@@ -39,27 +41,31 @@ class GameViewController: UIViewController {
     @IBAction func yellowButtonCounter(_ sender: UIButton) {
         yellowCount -= 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
+        checkUserAnswer()
     }
    
     @IBAction func redButton(_ sender: UIButton) {
         redCount += 1
         redButton.setTitle(String(redCount), for: .normal)
+        checkUserAnswer()
     }
     
     @IBAction func redButtonCounter(_ sender: UIButton) {
         redCount -= 1
         redButton.setTitle(String(redCount), for: .normal)
+        checkUserAnswer()
     }
     
     @IBAction func blueButton(_ sender: UIButton) {
         blueCount += 1
         blueButton.setTitle(String(blueCount), for: .normal)
+        checkUserAnswer()
     }
-    
     
     @IBAction func blueButtonCounter(_ sender: UIButton) {
         blueCount -= 1
         blueButton.setTitle(String(blueCount), for: .normal)
+        checkUserAnswer()
     }
     
     @IBAction func backToMenuButton(_ sender: Any) {
@@ -67,16 +73,18 @@ class GameViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         userCanvas.layer.borderWidth = 2
         userCanvas.layer.borderColor = UIColor.black.cgColor
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
         
         // This can be customized based on each question
-        userCanvas.backgroundColor = UIColor.red
         QuestionBank.sharedQuestionBank.addQuestions()
-        let goalCanvasQuestion:Canvas = QuestionBank.sharedQuestionBank.pop()
+        goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
         goalCanvas.backgroundColor = goalCanvasQuestion.color
+        userCanvas.backgroundColor = UIColor.white
         
         // Make round buttons
         yellowButtonDecrease.layer.borderWidth = 2
@@ -86,7 +94,6 @@ class GameViewController: UIViewController {
 //        yellowButtonDecrease.setTitle("-", for: .normal)
         self.applyRoundBorders(yellowButtonDecrease)
         
-
         redButtonDecrease.layer.borderWidth = 2
         redButtonDecrease.layer.borderColor = UIColor.black.cgColor
         redButton.setTitle(String(redCount), for: .normal)
@@ -108,5 +115,20 @@ class GameViewController: UIViewController {
         object.layer?.masksToBounds = true
     }
 
+    /**
+     If user answer is correct, display animation and update goal canvas with a new goal color
+     Else, update the user's canvas with the color that they're currently creating
+     */
+    func checkUserAnswer(){
+        if yellowCount == goalCanvasQuestion.red && redCount == goalCanvasQuestion.green
+            && blueCount == goalCanvasQuestion.blue {
+            print("correct!!!!!")
+            yellowCount = 0
+            redCount = 0
+            blueCount = 0
+            goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
+            goalCanvas.backgroundColor = goalCanvasQuestion.color
+        }
+    }
 
 }

@@ -217,13 +217,13 @@
                                                     <action selector="blueButton:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="Edk-Pb-Fyz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-1f-bvr" userLabel="Blue Button Decrease">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-1f-bvr" userLabel="Blue Button Decrease">
                                                 <rect key="frame" x="0.0" y="140" width="124" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="83j-KB-atX"/>
                                                     <constraint firstAttribute="height" constant="60" id="SSI-uC-eEW"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button" image="minus" catalog="system"/>
                                                 <connections>
                                                     <action selector="blueButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="Wcs-Kj-pIc"/>
                                                 </connections>

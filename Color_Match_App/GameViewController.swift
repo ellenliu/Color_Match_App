@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     var blueCount = 0
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var blueButtonDecrease: UIButton!
-    var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 0, green:0, blue:0), red: 0, green: 0, blue: 0)
+    var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 255, green:255, blue:255), red:5 , green: 5, blue: 5)
     /**
     
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
@@ -41,6 +41,7 @@ class GameViewController: UIViewController {
     @IBAction func yellowButtonCounter(_ sender: UIButton) {
         yellowCount -= 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
+        isCounterNegative(button: yellowButton, count: yellowCount)
         checkUserAnswer()
     }
    
@@ -53,6 +54,7 @@ class GameViewController: UIViewController {
     @IBAction func redButtonCounter(_ sender: UIButton) {
         redCount -= 1
         redButton.setTitle(String(redCount), for: .normal)
+        isCounterNegative(button: redButton, count: redCount)
         checkUserAnswer()
     }
     
@@ -65,6 +67,7 @@ class GameViewController: UIViewController {
     @IBAction func blueButtonCounter(_ sender: UIButton) {
         blueCount -= 1
         blueButton.setTitle(String(blueCount), for: .normal)
+        isCounterNegative(button: blueButton, count: blueCount)
         checkUserAnswer()
     }
     
@@ -91,20 +94,17 @@ class GameViewController: UIViewController {
         yellowButtonDecrease.layer.borderColor = UIColor.black.cgColor
         self.applyRoundBorders(yellowButton)
         yellowButton.setTitle(String(yellowCount), for: .normal)
-//        yellowButtonDecrease.setTitle("-", for: .normal)
         self.applyRoundBorders(yellowButtonDecrease)
         
         redButtonDecrease.layer.borderWidth = 2
         redButtonDecrease.layer.borderColor = UIColor.black.cgColor
         redButton.setTitle(String(redCount), for: .normal)
-//        redButtonDecrease.setTitle("-", for: .normal)
         self.applyRoundBorders(redButton)
         self.applyRoundBorders(redButtonDecrease)
         
         blueButtonDecrease.layer.borderWidth = 2
         blueButtonDecrease.layer.borderColor = UIColor.black.cgColor
         blueButton.setTitle(String(blueCount), for: .normal)
-//        redButtonDecrease.setTitle("-", for: .normal)
         self.applyRoundBorders(blueButton)
         self.applyRoundBorders(blueButtonDecrease)
 
@@ -128,6 +128,18 @@ class GameViewController: UIViewController {
             blueCount = 0
             goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
             goalCanvas.backgroundColor = goalCanvasQuestion.color
+            userCanvas.backgroundColor = UIColor(red: 255, green:255, blue: 255)
+        } else {
+            userCanvas.backgroundColor = UIColor(red: yellowCount * 50, green: redCount * 50, blue: blueCount * 50)
+        }
+    }
+    
+    /**
+     Checks if any color button is negative, and set the lower bound to 0
+     */
+    func isCounterNegative(button: UIButton, count: Int){
+        if count < 0{
+            button.setTitle(String(0), for: .normal)
         }
     }
 

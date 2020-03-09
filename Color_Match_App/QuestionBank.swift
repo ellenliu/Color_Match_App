@@ -24,6 +24,7 @@ class QuestionBank {
     private init(){
         self.unaskedQuestions = []
         self.askedQuestions = []
+        //self.addQuestions()
     }
     
     class func shared() -> QuestionBank {
@@ -51,5 +52,7 @@ class QuestionBank {
         unaskedQuestions.append(orange)
         unaskedQuestions.append(pink)
     }
+    
+
 
 }

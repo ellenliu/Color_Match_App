@@ -223,8 +223,9 @@
                                                     <constraint firstAttribute="width" constant="60" id="83j-KB-atX"/>
                                                     <constraint firstAttribute="height" constant="60" id="SSI-uC-eEW"/>
                                                 </constraints>
+
                                                 <state key="normal" title="Button" image="minus" catalog="system"/>
-                                                <connections>
+                               <connections>
                                                     <action selector="blueButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="Wcs-Kj-pIc"/>
                                                 </connections>
                                             </button>

@@ -237,6 +237,22 @@
                                     <constraint firstAttribute="width" constant="375" id="sAV-BO-CIR"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-vp-z87">
+                                <rect key="frame" x="87" y="470" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sZ-qu-GdD">
+                                        <rect key="frame" x="64" y="47" width="113" height="35"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.62232110091932236" blue="0.84662206831568831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4sZ-qu-GdD" firstAttribute="centerX" secondItem="LUH-vp-z87" secondAttribute="centerX" id="4xj-G6-2Mu"/>
+                                    <constraint firstItem="4sZ-qu-GdD" firstAttribute="centerY" secondItem="LUH-vp-z87" secondAttribute="centerY" id="JMX-Y3-C0w"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -249,7 +265,9 @@
                             <constraint firstItem="UIO-kA-TSp" firstAttribute="bottom" secondItem="ax1-d2-oQ3" secondAttribute="bottom" constant="368" id="FSp-yA-z2J"/>
                             <constraint firstItem="fdz-vG-GtO" firstAttribute="centerX" secondItem="UIO-kA-TSp" secondAttribute="centerX" id="Fuq-dq-xCX"/>
                             <constraint firstItem="t8K-ic-NvA" firstAttribute="leading" secondItem="UIO-kA-TSp" secondAttribute="leading" constant="20" id="GU4-Xi-S0m"/>
+                            <constraint firstItem="LUH-vp-z87" firstAttribute="centerY" secondItem="UIO-kA-TSp" secondAttribute="centerY" id="LVw-YQ-AJo"/>
                             <constraint firstItem="ax1-d2-oQ3" firstAttribute="top" secondItem="Zbm-m8-y00" secondAttribute="bottom" constant="28" id="P5W-uz-aBZ"/>
+                            <constraint firstItem="LUH-vp-z87" firstAttribute="centerX" secondItem="UIO-kA-TSp" secondAttribute="centerX" id="Ppa-nA-5h5"/>
                             <constraint firstItem="llW-2m-ecZ" firstAttribute="leading" secondItem="UIO-kA-TSp" secondAttribute="leading" constant="18" id="aGO-KQ-Hbz"/>
                             <constraint firstItem="ax1-d2-oQ3" firstAttribute="centerX" secondItem="UIO-kA-TSp" secondAttribute="centerX" id="fjb-tq-2at"/>
                         </constraints>
@@ -259,6 +277,7 @@
                     <connections>
                         <outlet property="blueButton" destination="l7X-fb-uQT" id="N5v-KY-dIP"/>
                         <outlet property="blueButtonDecrease" destination="E7X-1f-bvr" id="zcI-wr-tjG"/>
+                        <outlet property="correctView" destination="LUH-vp-z87" id="KsH-DF-kfR"/>
                         <outlet property="goalCanvas" destination="fdz-vG-GtO" id="tiO-kA-zDp"/>
                         <outlet property="redButton" destination="4aw-cV-Plu" id="EyE-Ca-CLM"/>
                         <outlet property="redButtonDecrease" destination="mei-w2-VzO" id="XjC-Y6-Oga"/>

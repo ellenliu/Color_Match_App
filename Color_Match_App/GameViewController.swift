@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
+    @IBOutlet weak var correctView: UIView!
     
     var yellowCount = 0
     @IBOutlet weak var yellowButton: UIButton!
@@ -28,7 +29,6 @@ class GameViewController: UIViewController {
     var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 255, green:255, blue:255), red:5 , green: 5, blue: 5)
 
     /**
-    
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
      */
     @IBAction func yellowButton(_ sender: UIButton) {
@@ -86,6 +86,15 @@ class GameViewController: UIViewController {
         
         loadFirstQuestion()
         createButtons()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removePopup))
+        tap.numberOfTapsRequired = 1
+        correctView.addGestureRecognizer(tap)
+        correctView.layer.borderWidth = 2
+        correctView.layer.borderColor = UIColor.black.cgColor
+        correctView.layer.backgroundColor = UIColor.green.cgColor
+        correctView.layer.cornerRadius = 10.0
+        correctView.alpha = 0
     }
     
     /**
@@ -135,7 +144,7 @@ class GameViewController: UIViewController {
     func checkUserAnswer(){
         if yellowCount == goalCanvasQuestion.red && redCount == goalCanvasQuestion.green
             && blueCount == goalCanvasQuestion.blue {
-            print("correct!!!!!")
+            displayPopup()
             yellowCount = 0
             redCount = 0
             blueCount = 0
@@ -155,6 +164,36 @@ class GameViewController: UIViewController {
             button.setTitle(String(0), for: .normal)
         } else if count > 5 {
             button.setTitle(String(5), for: .normal)
+        }
+    }
+    
+    /**
+     Popup displays whenever user gets a correct answer
+     */
+    func displayPopup(){
+        self.correctView.alpha = 1
+        self.correctView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        UIView.animate(
+            withDuration: 0.5, delay: 1, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.correctView.transform = .identity
+                self.correctView.alpha = 1
+        }, completion: nil)
+    }
+    
+    /**
+     Popup is removed when user does a tap gesture
+     */
+    @objc func removePopup(){
+        self.correctView.alpha = 0
+        print("remove!!!")
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.correctView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
+            self.correctView.alpha = 0
+        }) { (complete) in
+            if complete {
+                self.correctView.removeFromSuperview()
+            }
         }
     }
 

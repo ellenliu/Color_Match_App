@@ -15,18 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="248" misplaced="YES" axis="vertical" spacing="179" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-Y4-OdF">
-                                <rect key="frame" x="130.54609724575664" y="221" width="153" height="510"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="248" axis="vertical" spacing="179" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-Y4-OdF">
+                                <rect key="frame" x="82" y="200" width="250" height="506.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxv-M0-Ij3">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="42"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0T-Kd-PoX">
-                                        <rect key="frame" x="0.0" y="220" width="153" height="57"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
+                                        <rect key="frame" x="0.0" y="229.5" width="250" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
                                         <state key="normal" title="Play">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -35,8 +35,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLw-cR-lKf">
-                                        <rect key="frame" x="0.0" y="456" width="153" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                        <rect key="frame" x="0.0" y="457.5" width="250" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
                                         <state key="normal" title="Info">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -47,18 +47,16 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="QLw-cR-lKf" firstAttribute="centerX" secondItem="Fev-Y4-OdF" secondAttribute="centerX" id="4Su-z1-Qz0"/>
-                                    <constraint firstItem="I0T-Kd-PoX" firstAttribute="centerX" secondItem="Fev-Y4-OdF" secondAttribute="centerX" id="oQi-fW-y1n"/>
+                                    <constraint firstAttribute="width" constant="250" id="vq2-O8-6A6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fev-Y4-OdF" secondAttribute="trailing" constant="130.45390275424336" id="FkW-R3-Qnn"/>
                             <constraint firstItem="Fev-Y4-OdF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HVi-Hk-WAE"/>
+                            <constraint firstItem="Fev-Y4-OdF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Y9z-QU-3lr"/>
                             <constraint firstItem="Fev-Y4-OdF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ecg-DK-Cpv"/>
-                            <constraint firstItem="Fev-Y4-OdF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130.54609724575664" id="vMZ-ne-sN4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -223,9 +221,8 @@
                                                     <constraint firstAttribute="width" constant="60" id="83j-KB-atX"/>
                                                     <constraint firstAttribute="height" constant="60" id="SSI-uC-eEW"/>
                                                 </constraints>
-
                                                 <state key="normal" title="Button" image="minus" catalog="system"/>
-                               <connections>
+                                                <connections>
                                                     <action selector="blueButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="Wcs-Kj-pIc"/>
                                                 </connections>
                                             </button>

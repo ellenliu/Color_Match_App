@@ -43,7 +43,7 @@ class GameViewController: UIViewController {
     @IBAction func yellowButtonCounter(_ sender: UIButton) {
         yellowCount -= 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
-        isCounterNegative(button: yellowButton, count: yellowCount)
+        isCounterValueAllowed(button: yellowButton, count: yellowCount)
         checkUserAnswer()
     }
    
@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
     @IBAction func redButtonCounter(_ sender: UIButton) {
         redCount -= 1
         redButton.setTitle(String(redCount), for: .normal)
-        isCounterNegative(button: redButton, count: redCount)
+        isCounterValueAllowed(button: redButton, count: redCount)
         checkUserAnswer()
     }
     
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
     @IBAction func blueButtonCounter(_ sender: UIButton) {
         blueCount -= 1
         blueButton.setTitle(String(blueCount), for: .normal)
-        isCounterNegative(button: blueButton, count: blueCount)
+        isCounterValueAllowed(button: blueButton, count: blueCount)
         checkUserAnswer()
     }
     
@@ -84,45 +84,48 @@ class GameViewController: UIViewController {
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
         
-        // This can be customized based on each question
-
+        loadFirstQuestion()
+        createButtons()
+    }
+    
+    /**
+     Loads the first question and displays it
+     */
+    func loadFirstQuestion(){
         QuestionBank.sharedQuestionBank.addQuestions()
         goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
         goalCanvas.backgroundColor = goalCanvasQuestion.color
         userCanvas.backgroundColor = UIColor.white
-
-        
-        // Make round buttons
-        yellowButtonDecrease.layer.borderWidth = 2
-        yellowButtonDecrease.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    /**
+     Creates the 6 buttons on the screen
+     */
+    func createButtons(){
         self.applyRoundBorders(yellowButton)
         yellowButton.setTitle(String(yellowCount), for: .normal)
         self.applyRoundBorders(yellowButtonDecrease)
         
-        redButtonDecrease.layer.borderWidth = 2
-        redButtonDecrease.layer.borderColor = UIColor.black.cgColor
         redButton.setTitle(String(redCount), for: .normal)
         self.applyRoundBorders(yellowButtonDecrease)
-        
-
-        redButtonDecrease.layer.borderWidth = 2
-        redButtonDecrease.layer.borderColor = UIColor.black.cgColor
         redButton.setTitle(String(redCount), for: .normal)
 
         self.applyRoundBorders(redButton)
         self.applyRoundBorders(redButtonDecrease)
-        blueButtonDecrease.layer.borderWidth = 2
-        blueButtonDecrease.layer.borderColor = UIColor.black.cgColor
         blueButton.setTitle(String(blueCount), for: .normal)
 
         self.applyRoundBorders(blueButton)
         self.applyRoundBorders(blueButtonDecrease)
-
     }
     
+    /**
+     Applies round borders and other beautifying traits to buttons
+     */
     func applyRoundBorders(_ object: AnyObject) {
         object.layer?.cornerRadius = object.frame.size.width / 2
         object.layer?.masksToBounds = true
+        object.layer?.borderWidth = 2
+        object.layer?.borderColor = UIColor.black.cgColor
     }
 
     /**
@@ -145,11 +148,13 @@ class GameViewController: UIViewController {
     }
     
     /**
-     Checks if any color button is negative, and set the lower bound to 0
+     Checks if any color button is negative or over 5, and set the lower bound to 0 and upper bound to 5
      */
-    func isCounterNegative(button: UIButton, count: Int){
+    func isCounterValueAllowed(button: UIButton, count: Int){
         if count < 0{
             button.setTitle(String(0), for: .normal)
+        } else if count > 5 {
+            button.setTitle(String(5), for: .normal)
         }
     }
 

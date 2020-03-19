@@ -102,7 +102,12 @@ class GameViewController: UIViewController {
      */
     func loadFirstQuestion(){
         QuestionBank.sharedQuestionBank.addQuestions()
-        goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
+        if let index = UserDefaults.standard.string(forKey: "levelIndex") {
+            goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop(index: Int(index) ?? 0)
+        } else {
+            goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop(index: 0)
+            UserDefaults.standard.set(0, forKey: "levelIndex")
+        }
         goalCanvas.backgroundColor = goalCanvasQuestion.color
         userCanvas.backgroundColor = UIColor.white
     }
@@ -148,7 +153,11 @@ class GameViewController: UIViewController {
             yellowCount = 0
             redCount = 0
             blueCount = 0
-            goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop()
+            if let index = UserDefaults.standard.string(forKey: "levelIndex") {
+                let newIndex = (Int(index) ?? 0) + 1
+                UserDefaults.standard.set(newIndex, forKey: "levelIndex")
+                goalCanvasQuestion = QuestionBank.sharedQuestionBank.pop(index: newIndex)
+            }
             goalCanvas.backgroundColor = goalCanvasQuestion.color
             userCanvas.backgroundColor = UIColor(red: 255, green:255, blue: 255)
         } else {

@@ -86,13 +86,13 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-d2-oQ3">
-                                <rect key="frame" x="18" y="94" width="378" height="400"/>
+                                <rect key="frame" x="18" y="94" width="396" height="400"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llW-2m-ecZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="378" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="396" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Mix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8s-hG-Nbg">
-                                                <rect key="frame" x="156" y="90" width="66" height="20.5"/>
+                                                <rect key="frame" x="165" y="90" width="66" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -106,10 +106,10 @@
                                         </constraints>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdz-vG-GtO">
-                                        <rect key="frame" x="0.0" y="200" width="378" height="200"/>
+                                        <rect key="frame" x="0.0" y="200" width="396" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iq-aW-cG6">
-                                                <rect key="frame" x="171.5" y="90" width="35" height="20.5"/>
+                                                <rect key="frame" x="180.5" y="90" width="35" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -126,8 +126,8 @@
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8K-ic-NvA">
-                                <rect key="frame" x="20" y="620" width="374" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t8K-ic-NvA">
+                                <rect key="frame" x="20" y="620" width="392" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qBD-mC-Zg4">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="200"/>
@@ -153,7 +153,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="bN2-pN-nL8"/>
                                                     <constraint firstAttribute="height" constant="60" id="zWv-Tw-BVY"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="minus" catalog="system"/>
+                                                <state key="normal" image="minus" catalog="system"/>
                                                 <connections>
                                                     <action selector="yellowButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="jGw-Zq-lwF"/>
                                                 </connections>
@@ -164,7 +164,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HAL-Qd-jiQ">
-                                        <rect key="frame" x="125" y="0.0" width="125" height="200"/>
+                                        <rect key="frame" x="135" y="0.0" width="125" height="200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aw-cV-Plu">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
@@ -187,7 +187,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="9H5-Zr-Wcr"/>
                                                     <constraint firstAttribute="height" constant="60" id="RI9-e1-NlC"/>
                                                 </constraints>
-                                                <state key="normal" title="Red Button Decrease" image="minus" catalog="system"/>
+                                                <state key="normal" image="minus" catalog="system"/>
                                                 <connections>
                                                     <action selector="redButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="0Ny-be-eGm"/>
                                                 </connections>
@@ -198,10 +198,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="KSj-SB-iTM">
-                                        <rect key="frame" x="250" y="0.0" width="124" height="200"/>
+                                        <rect key="frame" x="270" y="0.0" width="122" height="200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7X-fb-uQT">
-                                                <rect key="frame" x="0.0" y="0.0" width="124" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="122" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="GH7-M4-Dvf"/>
@@ -216,12 +216,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-1f-bvr" userLabel="Blue Button Decrease">
-                                                <rect key="frame" x="0.0" y="140" width="124" height="60"/>
+                                                <rect key="frame" x="0.0" y="140" width="122" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="83j-KB-atX"/>
                                                     <constraint firstAttribute="height" constant="60" id="SSI-uC-eEW"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="minus" catalog="system"/>
+                                                <state key="normal" image="minus" catalog="system"/>
                                                 <connections>
                                                     <action selector="blueButtonCounter:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="Wcs-Kj-pIc"/>
                                                 </connections>

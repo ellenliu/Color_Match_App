@@ -116,19 +116,13 @@ class GameViewController: UIViewController {
      Creates the 6 buttons on the screen
      */
     func createButtons(){
-        self.applyRoundBorders(yellowButton)
         yellowButton.setTitle(String(yellowCount), for: .normal)
         self.applyRoundBorders(yellowButtonDecrease)
         
         redButton.setTitle(String(redCount), for: .normal)
-        self.applyRoundBorders(yellowButtonDecrease)
-        redButton.setTitle(String(redCount), for: .normal)
-
-        self.applyRoundBorders(redButton)
         self.applyRoundBorders(redButtonDecrease)
+        
         blueButton.setTitle(String(blueCount), for: .normal)
-
-        self.applyRoundBorders(blueButton)
         self.applyRoundBorders(blueButtonDecrease)
     }
     
@@ -136,10 +130,11 @@ class GameViewController: UIViewController {
      Applies round borders and other beautifying traits to buttons
      */
     func applyRoundBorders(_ object: AnyObject) {
-        object.layer?.cornerRadius = object.frame.size.width / 2
-        object.layer?.masksToBounds = true
+        //object.layer?.cornerRadius = object.frame.size.width / 2
+        //object.layer?.masksToBounds = true
         object.layer?.borderWidth = 2
-        object.layer?.borderColor = UIColor.black.cgColor
+        object.layer?.borderColor = UIColor.darkGray.cgColor
+        
     }
 
     /**

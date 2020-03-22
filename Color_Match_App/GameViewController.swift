@@ -13,7 +13,6 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
-    @IBOutlet weak var correctView: UIView!
     
     var yellowCount = 0
     @IBOutlet weak var yellowButton: UIButton!
@@ -28,15 +27,38 @@ class GameViewController: UIViewController {
     @IBOutlet weak var blueButtonDecrease: UIButton!
     var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 255, green:255, blue:255), red:5 , green: 5, blue: 5)
 
+    
+    lazy var popupView: PopupView = {
+        let popupView = PopupView()
+        popupView.translatesAutoresizingMaskIntoConstraints = false
+        popupView.layer.cornerRadius = 5
+        popupView.delegate = self
+        return popupView
+    }()
+    
+    
+    fileprivate let blurView: UIVisualEffectView = {
+        var blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
     /**
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
      */
     @IBAction func yellowButton(_ sender: UIButton) {
         yellowCount += 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
+        isCounterValueAllowed(button: yellowButton, count: yellowCount)
         checkUserAnswer()
 
     }
+    
+//    @IBAction func testPopup(_ sender: Any) {
+//        displayPopup()
+//    }
     /**
      Keeps track of how many times the yellow button was unpressed, updates the user canvas background color to be less yellow
      */
@@ -50,6 +72,7 @@ class GameViewController: UIViewController {
     @IBAction func redButton(_ sender: UIButton) {
         redCount += 1
         redButton.setTitle(String(redCount), for: .normal)
+        isCounterValueAllowed(button: redButton, count: redCount)
         checkUserAnswer()
     }
     
@@ -63,6 +86,7 @@ class GameViewController: UIViewController {
     @IBAction func blueButton(_ sender: UIButton) {
         blueCount += 1
         blueButton.setTitle(String(blueCount), for: .normal)
+        isCounterValueAllowed(button: blueButton, count: blueCount)
         checkUserAnswer()
     }
     
@@ -77,6 +101,7 @@ class GameViewController: UIViewController {
     @IBAction func backToMenuButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToMenuSegue", sender: self)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userCanvas.layer.borderWidth = 2
@@ -84,17 +109,15 @@ class GameViewController: UIViewController {
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
         
+        view.addSubview(blurView)
+        blurView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        blurView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        blurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        blurView.alpha = 0
+        
         loadFirstQuestion()
         createButtons()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(removePopup))
-        tap.numberOfTapsRequired = 1
-        correctView.addGestureRecognizer(tap)
-        correctView.layer.borderWidth = 2
-        correctView.layer.borderColor = UIColor.black.cgColor
-        correctView.layer.backgroundColor = UIColor.green.cgColor
-        correctView.layer.cornerRadius = 10.0
-        correctView.alpha = 0
     }
     
     /**
@@ -130,11 +153,8 @@ class GameViewController: UIViewController {
      Applies round borders and other beautifying traits to buttons
      */
     func applyRoundBorders(_ object: AnyObject) {
-        //object.layer?.cornerRadius = object.frame.size.width / 2
-        //object.layer?.masksToBounds = true
         object.layer?.borderWidth = 2
         object.layer?.borderColor = UIColor.darkGray.cgColor
-        
     }
 
     /**
@@ -172,33 +192,38 @@ class GameViewController: UIViewController {
     }
     
     /**
-     Popup displays whenever user gets a correct answer
+     Display the popup view and blur out the background
      */
     func displayPopup(){
-        self.correctView.alpha = 1
-        self.correctView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        UIView.animate(
-            withDuration: 0.5, delay: 1, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.correctView.transform = .identity
-                self.correctView.alpha = 1
-        }, completion: nil)
-    }
-    
-    /**
-     Popup is removed when user does a tap gesture
-     */
-    @objc func removePopup(){
-        self.correctView.alpha = 0
-        print("remove!!!")
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-            self.correctView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
-            self.correctView.alpha = 0
-        }) { (complete) in
-            if complete {
-                self.correctView.removeFromSuperview()
-            }
+        view.addSubview(popupView)
+        popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        popupView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        popupView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        popupView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        popupView.alpha = 0
+        
+        UIView.animate(withDuration: 0.5){
+            self.blurView.alpha = 1
+            self.popupView.alpha = 1
+            self.popupView.transform = CGAffineTransform.identity
         }
     }
+}
 
+extension GameViewController: PopupDelegate {
+    /**
+     Remove the popup when user clicks the 'correct' button
+     */
+    func handleDismissal() {
+        print("dismissed")
+        UIView.animate(withDuration: 0.5, animations: {
+            self.blurView.alpha = 0
+            self.popupView.alpha = 0
+            self.popupView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }) { (Bool) in
+            self.popupView.removeFromSuperview()
+        }
+    }
 }

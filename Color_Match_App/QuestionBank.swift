@@ -33,6 +33,10 @@ class QuestionBank {
         return unaskedQuestions[index]
     }
     
+    func size() -> Int {
+        return unaskedQuestions.count
+    }
+    
     /**
      Hardcoded answers to the questions
      */
@@ -66,7 +70,6 @@ class QuestionBank {
         unaskedQuestions.append(darkBlue)
         unaskedQuestions.append(darkTeal)
         unaskedQuestions.append(darkestYellow)
-       
     }
     
 

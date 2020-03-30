@@ -17,7 +17,6 @@
 		C3FE598623ED43E2002C2C6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FE598423ED43E2002C2C6F /* LaunchScreen.storyboard */; };
 		C3FE599123ED43E2002C2C6F /* Color_Match_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE599023ED43E2002C2C6F /* Color_Match_AppTests.swift */; };
 		C3FE599C23ED43E2002C2C6F /* Color_Match_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE599B23ED43E2002C2C6F /* Color_Match_AppUITests.swift */; };
-		C3FE59AA23ED4DD2002C2C6F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE59A923ED4DD2002C2C6F /* TutorialViewController.swift */; };
 		C3FE59AC23ED532F002C2C6F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE59AB23ED532F002C2C6F /* GameViewController.swift */; };
 		C3FE59AE23F0CCEF002C2C6F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE59AD23F0CCEE002C2C6F /* Canvas.swift */; };
 		C3FE59B023F0D102002C2C6F /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE59AF23F0D102002C2C6F /* QuestionBank.swift */; };
@@ -57,7 +56,6 @@
 		C3FE599723ED43E2002C2C6F /* Color_Match_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Color_Match_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FE599B23ED43E2002C2C6F /* Color_Match_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_Match_AppUITests.swift; sourceTree = "<group>"; };
 		C3FE599D23ED43E2002C2C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3FE59A923ED4DD2002C2C6F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		C3FE59AB23ED532F002C2C6F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C3FE59AD23F0CCEE002C2C6F /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		C3FE59AF23F0D102002C2C6F /* QuestionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBank.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				C3FE598223ED43E2002C2C6F /* Assets.xcassets */,
 				C3FE598423ED43E2002C2C6F /* LaunchScreen.storyboard */,
 				C3FE598723ED43E2002C2C6F /* Info.plist */,
-				C3FE59A923ED4DD2002C2C6F /* TutorialViewController.swift */,
 				C3FE59AB23ED532F002C2C6F /* GameViewController.swift */,
 				C3FE59AD23F0CCEE002C2C6F /* Canvas.swift */,
 				C3FE59AF23F0D102002C2C6F /* QuestionBank.swift */,
@@ -282,7 +279,6 @@
 				C3829B772432B0D2001BB21A /* WikiView.swift in Sources */,
 				C3FE597E23ED43DC002C2C6F /* ViewController.swift in Sources */,
 				C3FE597A23ED43DC002C2C6F /* AppDelegate.swift in Sources */,
-				C3FE59AA23ED4DD2002C2C6F /* TutorialViewController.swift in Sources */,
 				C3FE597C23ED43DC002C2C6F /* SceneDelegate.swift in Sources */,
 				C3FE59AE23F0CCEF002C2C6F /* Canvas.swift in Sources */,
 				C3FE59B023F0D102002C2C6F /* QuestionBank.swift in Sources */,

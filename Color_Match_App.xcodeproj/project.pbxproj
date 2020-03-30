@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C3829B752425F57B001BB21A /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3829B742425F57B001BB21A /* PopupView.swift */; };
+		C3829B772432B0D2001BB21A /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3829B762432B0D2001BB21A /* WikiView.swift */; };
 		C3FE597A23ED43DC002C2C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE597923ED43DC002C2C6F /* AppDelegate.swift */; };
 		C3FE597C23ED43DC002C2C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE597B23ED43DC002C2C6F /* SceneDelegate.swift */; };
 		C3FE597E23ED43DC002C2C6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE597D23ED43DC002C2C6F /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		C3829B742425F57B001BB21A /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		C3829B762432B0D2001BB21A /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
 		C3FE597623ED43DC002C2C6F /* Color_Match_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Color_Match_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FE597923ED43DC002C2C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3FE597B23ED43DC002C2C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				C3FE59AD23F0CCEE002C2C6F /* Canvas.swift */,
 				C3FE59AF23F0D102002C2C6F /* QuestionBank.swift */,
 				C3829B742425F57B001BB21A /* PopupView.swift */,
+				C3829B762432B0D2001BB21A /* WikiView.swift */,
 			);
 			path = Color_Match_App;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			files = (
 				C3FE59AC23ED532F002C2C6F /* GameViewController.swift in Sources */,
 				C3829B752425F57B001BB21A /* PopupView.swift in Sources */,
+				C3829B772432B0D2001BB21A /* WikiView.swift in Sources */,
 				C3FE597E23ED43DC002C2C6F /* ViewController.swift in Sources */,
 				C3FE597A23ED43DC002C2C6F /* AppDelegate.swift in Sources */,
 				C3FE59AA23ED4DD2002C2C6F /* TutorialViewController.swift in Sources */,

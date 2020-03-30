@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController, CAAnimationDelegate {
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController, CAAnimationDelegate {
     }
     
     @IBAction func infoButton(_ sender: Any) {
+        present(UIHostingController(rootView: WikiView()), animated: true)
     }
     
     override func viewDidLoad() {

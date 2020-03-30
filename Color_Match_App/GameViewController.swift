@@ -106,8 +106,10 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         userCanvas.layer.borderWidth = 2
         userCanvas.layer.borderColor = UIColor.black.cgColor
+        userCanvas.layer.cornerRadius = 5
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
+        goalCanvas.layer.cornerRadius = 5
         
         view.addSubview(blurView)
         blurView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -115,6 +117,7 @@ class GameViewController: UIViewController {
         blurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         blurView.alpha = 0
+        
         
         loadFirstQuestion()
         createButtons()
@@ -140,21 +143,33 @@ class GameViewController: UIViewController {
      */
     func createButtons(){
         yellowButton.setTitle(String(yellowCount), for: .normal)
-        self.applyRoundBorders(yellowButtonDecrease)
+        self.applyBorders(yellowButtonDecrease)
+        self.applyShadow(yellowButton)
         
         redButton.setTitle(String(redCount), for: .normal)
-        self.applyRoundBorders(redButtonDecrease)
+        self.applyBorders(redButtonDecrease)
+        self.applyShadow(redButton)
         
         blueButton.setTitle(String(blueCount), for: .normal)
-        self.applyRoundBorders(blueButtonDecrease)
+        self.applyBorders(blueButtonDecrease)
+        self.applyShadow(blueButton)
     }
     
     /**
      Applies round borders and other beautifying traits to buttons
      */
-    func applyRoundBorders(_ object: AnyObject) {
+    func applyBorders(_ object: AnyObject) {
         object.layer?.borderWidth = 2
         object.layer?.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    func applyShadow(_ button: UIButton){
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 0.0
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 4.0
     }
 
     /**

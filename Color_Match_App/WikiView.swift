@@ -27,6 +27,8 @@ struct WikiView: View {
                 "This is called additive mixing. You will be given a split screen with the goal color on " +
                 "one panel, and the objective of the game is to recreate the color on the other panel " +
                 "with the correct mixutre of the three primary colors.")
+            
+            Image("color-mix").resizable().scaledToFit()
         }
             .padding([.leading, .trailing], 30)
     }

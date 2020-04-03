@@ -42,7 +42,7 @@
                                         </state>
                                         <connections>
                                             <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XTX-JO-4NM"/>
-                                            <segue destination="MR6-11-3UF" kind="presentation" id="RI5-9P-KHl"/>
+                                            <segue destination="MR6-11-3UF" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="RI5-9P-KHl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -265,11 +265,12 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialViewController" id="MR6-11-3UF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lp1-Ba-V1e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Epn-OB-SMz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="skS-gj-rcr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avo-Qf-iOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

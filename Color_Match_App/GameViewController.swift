@@ -135,6 +135,7 @@ class GameViewController: UIViewController {
             UserDefaults.standard.set(0, forKey: "levelIndex")
         }
         goalCanvas.backgroundColor = goalCanvasQuestion.color
+        convertToHex(goalCanvasQuestion.color)
         userCanvas.backgroundColor = UIColor.white
     }
     
@@ -202,6 +203,7 @@ class GameViewController: UIViewController {
                 }
             }
             goalCanvas.backgroundColor = goalCanvasQuestion.color
+            convertToHex(goalCanvasQuestion.color)
             userCanvas.backgroundColor = UIColor(red: 255, green:255, blue: 255)
         } else {
             userCanvas.backgroundColor = UIColor(red: yellowCount * 50, green: redCount * 50, blue: blueCount * 50)
@@ -237,6 +239,16 @@ class GameViewController: UIViewController {
             self.popupView.alpha = 1
             self.popupView.transform = CGAffineTransform.identity
         }
+    }
+    
+    func convertToHex(_ color: UIColor) -> String {
+        let components = color.cgColor.components
+        let r: CGFloat = components?[0] ?? 0.0
+        let g: CGFloat = components?[1] ?? 0.0
+        let b: CGFloat = components?[2] ?? 0.0
+        
+        let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+        return hexString
     }
 }
 

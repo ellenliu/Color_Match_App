@@ -15,25 +15,24 @@ struct WikiView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 
-                Text("What is Color?").font(.system(size: 30)).bold().padding(.top, 60)
+                Text("What is Color?").font(.system(size: 30)).bold().padding(.top, 50)
             
                 Text("Our perception of color is determined by two factors - the light rays of different wavelengths " + "entering our eyes, and how our brains subjectively interpret those light rays. Therefore, color is " + "not a property of light, but rather an product of human perception. " +
                     "What we call 'color' is how we perceive a very small range of light's wavelength.")
                 
                 Image("color-spectrum").resizable().scaledToFit()
                 
-                Text("Additive Mixing").font(.system(size: 30)).bold().padding(.top, 10)
+                Text("Additive Mixing").font(.system(size: 30)).bold().padding(.top, 20)
                 
                 Text("Most colors can be represented as a positive sum of the three primary colors - red, green, and blue. " +
-                "This is called additive mixing. This means a lot of colors can be described as: ")
-                
-                Image("formula").resizable().scaledToFit()
-                
-                Text("Where A, B, and C are non negative integers. Here is an example: " + "")
+                "This is called additive mixing. This means a lot of colors can be described as: Color = A(redness) + B(greenness) + C(blueness)")
+                 
+                Text("Where A, B, and C are non negative integers. Here is an example " +
+                    "where one part green and one part blue creates cyan: ")
                 
                 Image("example").resizable().scaledToFit()
                 
-                Text("How to Play").font(.system(size: 30)).bold().padding(.top, 10)
+                Text("How to Play").font(.system(size: 30)).bold().padding(.top, 20)
                 
                 Text("You will be given a split screen with the goal color on " +
                     "one panel, and the objective of the game is to recreate the color on the other panel " +

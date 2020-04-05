@@ -20,7 +20,7 @@ class PopupView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 96, weight: .bold)
-        label.text = "🐹"
+        label.text = "✔️"
         label.textColor = UIColor(red: 147, green: 227, blue: 105)
         label.textAlignment = .center
         return label

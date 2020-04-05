@@ -71,7 +71,4 @@ class QuestionBank {
         unaskedQuestions.append(darkTeal)
         unaskedQuestions.append(darkestYellow)
     }
-    
-
-
 }

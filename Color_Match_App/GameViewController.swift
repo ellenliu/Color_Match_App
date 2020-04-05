@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, CAAnimationDelegate {
 
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
@@ -26,7 +26,10 @@ class GameViewController: UIViewController {
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var blueButtonDecrease: UIButton!
     var goalCanvasQuestion:Canvas = Canvas(color: UIColor(red: 255, green:255, blue:255), red:5 , green: 5, blue: 5)
-
+    
+    let gradient = CAGradientLayer()
+    var currentGradient: Int = 0
+    var gradientSet = [[CGColor]]()
     
     lazy var popupView: PopupView = {
         let popupView = PopupView()
@@ -36,7 +39,6 @@ class GameViewController: UIViewController {
         return popupView
     }()
     
-    
     fileprivate let blurView: UIVisualEffectView = {
         var blurEffect = UIBlurEffect(style: .light)
         let view = UIVisualEffectView(effect: blurEffect)
@@ -44,6 +46,23 @@ class GameViewController: UIViewController {
         return view
     }()
     
+    fileprivate let userHexLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        //label.text = "#FFFFFF"
+        label.textColor = UIColor.black
+        return label
+    }()
+    
+    fileprivate let goalHexLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        //label.text = "#FFFFFF"
+        label.textColor = UIColor.black
+        return label
+    }()
     
     /**
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
@@ -51,49 +70,45 @@ class GameViewController: UIViewController {
     @IBAction func yellowButton(_ sender: UIButton) {
         yellowCount += 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
-        isCounterValueAllowed(button: yellowButton, count: yellowCount)
+        isCounterValueAllowed(button: yellowButton, count: &yellowCount)
         checkUserAnswer()
-
     }
     
-//    @IBAction func testPopup(_ sender: Any) {
-//        displayPopup()
-//    }
     /**
      Keeps track of how many times the yellow button was unpressed, updates the user canvas background color to be less yellow
      */
     @IBAction func yellowButtonCounter(_ sender: UIButton) {
         yellowCount -= 1
         yellowButton.setTitle(String(yellowCount), for: .normal)
-        isCounterValueAllowed(button: yellowButton, count: yellowCount)
+        isCounterValueAllowed(button: yellowButton, count: &yellowCount)
         checkUserAnswer()
     }
    
     @IBAction func redButton(_ sender: UIButton) {
         redCount += 1
         redButton.setTitle(String(redCount), for: .normal)
-        isCounterValueAllowed(button: redButton, count: redCount)
+        isCounterValueAllowed(button: redButton, count: &redCount)
         checkUserAnswer()
     }
     
     @IBAction func redButtonCounter(_ sender: UIButton) {
         redCount -= 1
         redButton.setTitle(String(redCount), for: .normal)
-        isCounterValueAllowed(button: redButton, count: redCount)
+        isCounterValueAllowed(button: redButton, count: &redCount)
         checkUserAnswer()
     }
     
     @IBAction func blueButton(_ sender: UIButton) {
         blueCount += 1
         blueButton.setTitle(String(blueCount), for: .normal)
-        isCounterValueAllowed(button: blueButton, count: blueCount)
+        isCounterValueAllowed(button: blueButton, count: &blueCount)
         checkUserAnswer()
     }
     
     @IBAction func blueButtonCounter(_ sender: UIButton) {
         blueCount -= 1
         blueButton.setTitle(String(blueCount), for: .normal)
-        isCounterValueAllowed(button: blueButton, count: blueCount)
+        isCounterValueAllowed(button: blueButton, count: &blueCount)
         checkUserAnswer()
     }
     
@@ -118,13 +133,25 @@ class GameViewController: UIViewController {
         blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         blurView.alpha = 0
         
+        userCanvas.addSubview(userHexLabel)
+        userHexLabel.bottomAnchor.constraint(equalTo: userCanvas.bottomAnchor, constant: -12).isActive = true
+        userHexLabel.rightAnchor.constraint(equalTo: userCanvas.rightAnchor, constant: -12).isActive = true
+        
+        goalCanvas.addSubview(goalHexLabel)
+        goalHexLabel.bottomAnchor.constraint(equalTo: goalCanvas.bottomAnchor, constant: -12).isActive = true
+        goalHexLabel.rightAnchor.constraint(equalTo: goalCanvas.rightAnchor, constant: -12).isActive = true
         
         loadFirstQuestion()
         createButtons()
     }
     
+    override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews()
+        createGradientView(goalCanvasQuestion.color)
+    }
+    
     /**
-     Loads the first question and displays it
+     Loads the first question and displays it along with initial hex values and gradient
      */
     func loadFirstQuestion(){
         QuestionBank.sharedQuestionBank.addQuestions()
@@ -135,12 +162,13 @@ class GameViewController: UIViewController {
             UserDefaults.standard.set(0, forKey: "levelIndex")
         }
         goalCanvas.backgroundColor = goalCanvasQuestion.color
-        convertToHex(goalCanvasQuestion.color)
         userCanvas.backgroundColor = UIColor.white
+        userHexLabel.text = "#FFFFFF"
+        goalHexLabel.text = convertToHex(goalCanvasQuestion.color)
     }
     
     /**
-     Creates the 6 buttons on the screen
+     Creates the 6 buttons on the screen with effects
      */
     func createButtons(){
         yellowButton.setTitle(String(yellowCount), for: .normal)
@@ -178,7 +206,7 @@ class GameViewController: UIViewController {
     }
 
     /**
-     If user answer is correct, display animation and update goal canvas with a new goal color
+     If user answer is correct, display animation, update goal canvas with a new goal color, and update user's current level in user default
      Else, update the user's canvas with the color that they're currently creating
      */
     func checkUserAnswer(){
@@ -203,21 +231,26 @@ class GameViewController: UIViewController {
                 }
             }
             goalCanvas.backgroundColor = goalCanvasQuestion.color
-            convertToHex(goalCanvasQuestion.color)
             userCanvas.backgroundColor = UIColor(red: 255, green:255, blue: 255)
+            userHexLabel.text = "#FFFFFF"
+            goalHexLabel.text = convertToHex(goalCanvas.backgroundColor!)
+            createGradientView(goalCanvasQuestion.color)
         } else {
             userCanvas.backgroundColor = UIColor(red: yellowCount * 50, green: redCount * 50, blue: blueCount * 50)
+            userHexLabel.text = convertToHex(userCanvas.backgroundColor!)
         }
     }
     
     /**
      Checks if any color button is negative or over 5, and set the lower bound to 0 and upper bound to 5
      */
-    func isCounterValueAllowed(button: UIButton, count: Int){
+    func isCounterValueAllowed(button: UIButton, count: inout Int){
         if count < 0{
-            button.setTitle(String(0), for: .normal)
+            count = 0
+            button.setTitle(String(count), for: .normal)
         } else if count > 5 {
-            button.setTitle(String(5), for: .normal)
+            count = 5
+            button.setTitle(String(count), for: .normal)
         }
     }
     
@@ -241,6 +274,9 @@ class GameViewController: UIViewController {
         }
     }
     
+    /**
+     Returns the hex value of a UIColor
+     */
     func convertToHex(_ color: UIColor) -> String {
         let components = color.cgColor.components
         let r: CGFloat = components?[0] ?? 0.0
@@ -249,6 +285,53 @@ class GameViewController: UIViewController {
         
         let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
         return hexString
+    }
+    
+    func createGradientView(_ userColor: UIColor){
+        let colorOne = userColor.cgColor
+        let colorTwo = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        gradientSet.append([colorOne, colorTwo])
+        gradientSet.append([colorTwo, colorOne])
+        
+        // Set where the gradient size and bound
+        gradient.frame = self.view.bounds
+        gradient.colors = gradientSet[currentGradient]
+        gradient.startPoint = CGPoint(x:0, y:0)
+        gradient.endPoint = CGPoint(x:1, y:1)
+        gradient.drawsAsynchronously = true
+        
+        self.view.layer.insertSublayer(gradient, at: 0)
+        animateGradient()
+    }
+    
+    /**
+     Animtate for 3 seconds, makes sure the animation doesn't get removed upon completion
+     */
+    func animateGradient(){
+        // cycle through the colors
+        if currentGradient < gradientSet.count - 1{
+            currentGradient += 1
+        } else {
+            currentGradient = 0
+        }
+        
+        let gradientAnimation = CABasicAnimation(keyPath: "colors")
+        gradientAnimation.duration = 3.0
+        gradientAnimation.toValue = gradientSet[currentGradient]
+        gradientAnimation.fillMode = CAMediaTimingFillMode.forwards
+        gradientAnimation.isRemovedOnCompletion = false
+        gradientAnimation.delegate = self
+        gradient.add(gradientAnimation, forKey: "gradientChangeAnimation")
+    }
+    
+    /**
+     If animation stops, restart it
+     */
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag{
+            gradient.colors = gradientSet[currentGradient]
+            animateGradient()
+        }
     }
 }
 

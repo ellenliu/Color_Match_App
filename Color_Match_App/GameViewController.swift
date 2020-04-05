@@ -288,9 +288,6 @@ class GameViewController: UIViewController, CAAnimationDelegate {
     }
     
     func createGradientView(_ userColor: UIColor){
-        print("i was called with color ")
-        print(userColor)
-    
         let colorOne = userColor.cgColor
         let colorTwo = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         gradientSet.append([colorOne, colorTwo])
@@ -319,7 +316,7 @@ class GameViewController: UIViewController, CAAnimationDelegate {
         }
         
         let gradientAnimation = CABasicAnimation(keyPath: "colors")
-        gradientAnimation.duration = 2.0
+        gradientAnimation.duration = 3.0
         gradientAnimation.toValue = gradientSet[currentGradient]
         gradientAnimation.fillMode = CAMediaTimingFillMode.forwards
         gradientAnimation.isRemovedOnCompletion = false

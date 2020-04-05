@@ -1,4 +1,4 @@
-# Color_Match_App
+# Color Match - an iOS App
 
 A game to learn about color mixing! Recreate the goal color by mixing different amounts of red, green and blue. 
 

@@ -15,6 +15,9 @@ class GameViewController: UIViewController, CAAnimationDelegate {
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
     
+    @IBOutlet weak var canvasStackView: UIStackView!
+    @IBOutlet weak var buttonStackView: UIStackView!
+    
     var yellowCount = 0
     @IBOutlet weak var yellowButton: UIButton!
     @IBOutlet weak var yellowButtonDecrease: UIButton!
@@ -121,8 +124,11 @@ class GameViewController: UIViewController, CAAnimationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 18).isActive = true
-        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 28).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -18).isActive = true
+        
+        canvasStackView.translatesAutoresizingMaskIntoConstraints = false
+        canvasStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
         
         userCanvas.layer.borderWidth = 2
         userCanvas.layer.borderColor = UIColor.black.cgColor

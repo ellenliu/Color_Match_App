@@ -86,7 +86,7 @@
                                     <action selector="backToMenuButton:" destination="UNX-pa-4GZ" eventType="touchUpInside" id="RPP-RU-pVc"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-d2-oQ3" userLabel="Canvas Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-d2-oQ3" userLabel="Canvas Stack View">
                                 <rect key="frame" x="18" y="184" width="378" height="410"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llW-2m-ecZ">
@@ -229,7 +229,6 @@
                             <constraint firstItem="ax1-d2-oQ3" firstAttribute="leading" secondItem="UIO-kA-TSp" secondAttribute="leading" constant="18" id="56d-28-LBA"/>
                             <constraint firstItem="t8K-ic-NvA" firstAttribute="centerX" secondItem="UIO-kA-TSp" secondAttribute="centerX" id="5Qa-8t-iWu"/>
                             <constraint firstItem="UIO-kA-TSp" firstAttribute="bottom" secondItem="t8K-ic-NvA" secondAttribute="bottom" constant="42" id="BCz-iO-CYy"/>
-                            <constraint firstItem="UIO-kA-TSp" firstAttribute="bottom" secondItem="ax1-d2-oQ3" secondAttribute="bottom" constant="268" id="FSp-yA-z2J"/>
                             <constraint firstItem="fdz-vG-GtO" firstAttribute="centerX" secondItem="UIO-kA-TSp" secondAttribute="centerX" id="Fuq-dq-xCX"/>
                             <constraint firstItem="t8K-ic-NvA" firstAttribute="leading" secondItem="UIO-kA-TSp" secondAttribute="leading" constant="20" id="GU4-Xi-S0m"/>
                             <constraint firstItem="llW-2m-ecZ" firstAttribute="leading" secondItem="UIO-kA-TSp" secondAttribute="leading" constant="18" id="aGO-KQ-Hbz"/>
@@ -241,6 +240,8 @@
                     <connections>
                         <outlet property="blueButton" destination="l7X-fb-uQT" id="N5v-KY-dIP"/>
                         <outlet property="blueButtonDecrease" destination="E7X-1f-bvr" id="zcI-wr-tjG"/>
+                        <outlet property="buttonStackView" destination="t8K-ic-NvA" id="PaJ-Hb-OhI"/>
+                        <outlet property="canvasStackView" destination="ax1-d2-oQ3" id="MpT-aX-DMm"/>
                         <outlet property="closeButton" destination="Zbm-m8-y00" id="3DA-E9-Lk2"/>
                         <outlet property="goalCanvas" destination="fdz-vG-GtO" id="tiO-kA-zDp"/>
                         <outlet property="redButton" destination="4aw-cV-Plu" id="EyE-Ca-CLM"/>

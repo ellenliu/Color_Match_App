@@ -43,18 +43,22 @@ class QuestionBank {
     func addQuestions () {
         let darkRed:Canvas = Canvas(color: UIColor(red: 100, green: 0, blue:0), red: 2, green:0, blue: 0)
         let teal: Canvas = Canvas(color: UIColor(red: 50, green: 150, blue:150), red: 1, green:3, blue: 3)
-        let magenta: Canvas = Canvas(color: UIColor(red: 150, green: 50, blue:150), red: 3, green: 0, blue: 3)
+        let magenta: Canvas = Canvas(color: UIColor(red: 150, green: 50, blue:150), red: 3, green: 1, blue: 3)
         let orange: Canvas = Canvas(color: UIColor(red: 200, green: 100, blue:0), red: 4, green: 2, blue: 0)
         let pink: Canvas = Canvas(color: UIColor(red: 250, green: 150, blue:200), red: 5, green: 3, blue: 4)
         let lightBlue = Canvas(color: UIColor(red: 50, green: 200, blue:250), red: 1, green:4, blue: 5)
         let lightGreen = Canvas(color: UIColor(red: 200, green: 250, blue:200), red: 4, green:5, blue: 4)
         let lightPurple = Canvas(color: UIColor(red: 150, green: 150, blue:250), red: 3, green:3, blue: 5)
-        let darkYellow = Canvas(color: UIColor(red: 200, green: 200, blue:0), red: 4, green:4, blue: 1)
+        let darkYellow = Canvas(color: UIColor(red: 200, green: 200, blue:0), red: 4, green:4, blue: 0)
         let redOrange = Canvas(color: UIColor(red: 250, green: 100, blue:100), red: 5, green:2, blue: 2)
         let lightPink = Canvas(color: UIColor(red: 250, green: 200, blue:200), red: 5, green:4, blue: 4)
         let darkBlue = Canvas(color: UIColor(red: 0, green: 50, blue:100), red: 0, green:1, blue: 2)
         let darkTeal = Canvas(color: UIColor(red: 0, green: 100, blue:100), red: 0, green:2, blue: 2)
         let darkestYellow = Canvas(color: UIColor(red: 100, green: 100, blue:0), red: 2, green:2, blue: 0)
+        let lightGray = Canvas(color: UIColor(red: 100, green: 100, blue:100), red: 2, green:2, blue: 2)
+        let grassGreen = Canvas(color: UIColor(red: 0, green: 150, blue:50), red: 0, green:3, blue: 1)
+        let skinColor = Canvas(color: UIColor(red: 200, green: 150, blue:50), red: 4, green:3, blue: 1)
+        let lightestPurple = Canvas(color: UIColor(red: 200, green: 200, blue:250), red: 4, green:4, blue: 5)
         
         unaskedQuestions.append(darkRed)
         unaskedQuestions.append(teal)
@@ -70,5 +74,10 @@ class QuestionBank {
         unaskedQuestions.append(darkBlue)
         unaskedQuestions.append(darkTeal)
         unaskedQuestions.append(darkestYellow)
+        unaskedQuestions.append(lightGray)
+        unaskedQuestions.append(grassGreen)
+        unaskedQuestions.append(skinColor)
+        unaskedQuestions.append(lightestPurple)
+        
     }
 }

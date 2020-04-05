@@ -11,6 +11,7 @@ import UIKit
 
 class GameViewController: UIViewController, CAAnimationDelegate {
 
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var userCanvas: UIView!
     @IBOutlet weak var goalCanvas: UIView!
     
@@ -119,12 +120,16 @@ class GameViewController: UIViewController, CAAnimationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 18).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
+        
         userCanvas.layer.borderWidth = 2
         userCanvas.layer.borderColor = UIColor.black.cgColor
-        userCanvas.layer.cornerRadius = 5
+        userCanvas.layer.cornerRadius = 10
         goalCanvas.layer.borderWidth = 2
         goalCanvas.layer.borderColor = UIColor.black.cgColor
-        goalCanvas.layer.cornerRadius = 5
+        goalCanvas.layer.cornerRadius = 10
         
         view.addSubview(blurView)
         blurView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

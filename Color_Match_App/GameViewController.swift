@@ -36,7 +36,6 @@ class GameViewController: UIViewController {
         return popupView
     }()
     
-    
     fileprivate let blurView: UIVisualEffectView = {
         var blurEffect = UIBlurEffect(style: .light)
         let view = UIVisualEffectView(effect: blurEffect)
@@ -44,6 +43,23 @@ class GameViewController: UIViewController {
         return view
     }()
     
+    fileprivate let userHexLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        //label.text = "#FFFFFF"
+        label.textColor = UIColor.black
+        return label
+    }()
+    
+    fileprivate let goalHexLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        //label.text = "#FFFFFF"
+        label.textColor = UIColor.black
+        return label
+    }()
     
     /**
      Keeps track of how many times yellow was added, updated user canvas to be more yellow
@@ -53,12 +69,8 @@ class GameViewController: UIViewController {
         yellowButton.setTitle(String(yellowCount), for: .normal)
         isCounterValueAllowed(button: yellowButton, count: yellowCount)
         checkUserAnswer()
-
     }
     
-//    @IBAction func testPopup(_ sender: Any) {
-//        displayPopup()
-//    }
     /**
      Keeps track of how many times the yellow button was unpressed, updates the user canvas background color to be less yellow
      */
@@ -118,6 +130,13 @@ class GameViewController: UIViewController {
         blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         blurView.alpha = 0
         
+        userCanvas.addSubview(userHexLabel)
+        userHexLabel.bottomAnchor.constraint(equalTo: userCanvas.bottomAnchor, constant: -12).isActive = true
+        userHexLabel.rightAnchor.constraint(equalTo: userCanvas.rightAnchor, constant: -12).isActive = true
+        
+        goalCanvas.addSubview(goalHexLabel)
+        goalHexLabel.bottomAnchor.constraint(equalTo: goalCanvas.bottomAnchor, constant: -12).isActive = true
+        goalHexLabel.rightAnchor.constraint(equalTo: goalCanvas.rightAnchor, constant: -12).isActive = true
         
         loadFirstQuestion()
         createButtons()
@@ -135,8 +154,9 @@ class GameViewController: UIViewController {
             UserDefaults.standard.set(0, forKey: "levelIndex")
         }
         goalCanvas.backgroundColor = goalCanvasQuestion.color
-        convertToHex(goalCanvasQuestion.color)
         userCanvas.backgroundColor = UIColor.white
+        userHexLabel.text = "#FFFFFF"
+        goalHexLabel.text = convertToHex(goalCanvasQuestion.color)
     }
     
     /**
@@ -203,10 +223,14 @@ class GameViewController: UIViewController {
                 }
             }
             goalCanvas.backgroundColor = goalCanvasQuestion.color
-            convertToHex(goalCanvasQuestion.color)
             userCanvas.backgroundColor = UIColor(red: 255, green:255, blue: 255)
+            userHexLabel.text = "#FFFFFF"
+            goalHexLabel.text = convertToHex(goalCanvas.backgroundColor!)
+            //self.view.backgroundColor = UIColor(red: 255, green:255, blue: 255)
         } else {
             userCanvas.backgroundColor = UIColor(red: yellowCount * 50, green: redCount * 50, blue: blueCount * 50)
+            userHexLabel.text = convertToHex(userCanvas.backgroundColor!)
+            //self.view.backgroundColor = UIColor(red: yellowCount * 50, green: redCount * 50, blue: blueCount * 50)
         }
     }
     

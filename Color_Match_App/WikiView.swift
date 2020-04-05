@@ -26,7 +26,7 @@ struct WikiView: View {
                 
                 Text("Most colors can be represented as a positive sum of the three primary colors - red, green, and blue. " +
                 "This is called additive mixing. This means a lot of colors can be described as: Color = A(redness) + B(greenness) + C(blueness)")
-                 
+                
                 Text("Where A, B, and C are non negative integers. Here is an example " +
                     "where one part green and one part blue creates cyan: ")
                 

@@ -27,7 +27,7 @@ class ViewController: UIViewController, CAAnimationDelegate {
        label.textColor = UIColor.white
        label.textAlignment = .center
        return label
-       }()
+    }()
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
@@ -50,18 +50,13 @@ class ViewController: UIViewController, CAAnimationDelegate {
         
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -400).isActive = true
-        self.createButtons(playButton)
-        self.createButtons(infoButton)
+        playButton.layer.cornerRadius = 30
+        infoButton.layer.cornerRadius = 30
     }
     
     override func viewDidLayoutSubviews(){
         super.viewDidLayoutSubviews()
         createGradientView()
-    }
-    
-    func createButtons(_ button: UIButton){
-        button.layer.cornerRadius = 30
-        
     }
     
     func createGradientView(){
@@ -111,8 +106,5 @@ class ViewController: UIViewController, CAAnimationDelegate {
             animateGradient()
         }
     }
-
-   
-    
 }
 
